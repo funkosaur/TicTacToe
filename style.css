@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
+  grid-template-rows: 2em 12em 3em 60vh;
+}
+
+.header {
+  grid-row: 1/2;
+  grid-column: 1/6;
+  background-color: aqua;
+}
+
+.players-scoreboard {
+  grid-row: 2/3;
+  grid-column: 2/5;
+  background-color: blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.start-game {
+  grid-row: 3/4;
+  grid-column: 3/4;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-board-div {
+  grid-row: 4/5;
+  grid-column: 3/4;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-board {
+  width: 80%;
+  height: 90%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "top-left top-middle top-right"
+    "middle-left middle-center middle-right"
+    "bottom-left bottom-middle bottom-right";
+}
+
+#top-left {
+  grid-area: top-left;
+}
+
+#top-middle {
+  grid-area: top-middle;
+}
+
+#top-right {
+  grid-area: top-right;
+}
+
+#middle-left {
+  grid-area: middle-left;
+}
+
+#middle-center {
+  grid-area: middle-center;
+}
+
+#middle-right {
+  grid-area: middle-right;
+}
+
+#bottom-left {
+  grid-area: bottom-left;
+}
+
+#bottom-middle {
+  grid-area: bottom-middle;
+}
+
+#bottom-right {
+  grid-area: bottom-right;
+}
+
+.board {
+}
+
+.top {
+  border-bottom: 4px solid black;
+}
+
+.middle {
+  border-top: 4px solid black;
+  border-bottom: 4px solid black;
+}
+
+.bottom {
+  border-top: 4px solid black;
+}
+
+.left {
+  border-right: 4px solid black;
+}
+
+.center {
+  border-left: 4px solid black;
+  border-right: 4px solid black;
+}
+
+.right {
+  border-left: 4px solid black;
+}

@@ -4,7 +4,45 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="icon" href="data:;base64,=" />
     <title>TicTacToe</title>
   </head>
-  <body></body>
+  <body>
+    <div class="header"></div>
+    <div class="players-scoreboard">
+      <div class="player-1">
+        <h1>Player 1</h1>
+        <h2>0</h2>
+      </div>
+      <div class="choose-player">
+        <label for="players">Choose one:</label>
+        <select name="choose-players" id="choose-one" form="player-form">
+          <option value="player2">vs. Player 2</option>
+          <option value="computer">vs. Computer</option>
+        </select>
+      </div>
+      <div class="player-2">
+        <h1>Player 2</h1>
+        <h2>0</h2>
+      </div>
+    </div>
+    <div class="start-game">
+      <button type="button" class="start">Start Game</button>
+    </div>
+    <div class="game-board-div">
+      <div class="game-board">
+        <div class="board top left" id="top-left"></div>
+        <div class="board top center" id="top-middle"></div>
+        <div class="board top right" id="top-right"></div>
+        <div class="board middle left" id="middle-left"></div>
+        <div class="board middle center" id="middle-center"></div>
+        <div class="board middle right" id="middle-right"></div>
+        <div class="board bottom left" id="bottom-left"></div>
+        <div class="board bottom center" id="bottom-middle"></div>
+        <div class="board bottom right" id="bottom-right"></div>
+      </div>
+    </div>
+  </body>
 </html>
