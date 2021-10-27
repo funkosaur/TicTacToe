@@ -2,12 +2,25 @@
   box-sizing: border-box;
 }
 
+:root {
+  --cultured1: #f8f9fa;
+  --cultured: #e9ecef;
+  --gainsboro: #dee2e6;
+  --light-gray: #ced4da;
+  --cadet-blue: #adb5bd;
+  --state-gray: #6c757d;
+  --davys-gray: #495057;
+  --gunmetal: #343a40;
+  --charleston: #212529;
+}
+
 body {
   display: grid;
   grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
   grid-template-rows: 2em 12em 3em 60vh;
   height: 100%;
   width: 100%;
+  color: var(--cultured1);
 }
 
 .header {
@@ -31,12 +44,34 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .player-2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#score1,
+#score2 {
+  height: 2.5em;
+  width: 1.5em;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.2em;
+  border: none;
+  margin-top: 0.5em;
+  font-size: 1.9em;
+}
+
+#player-title,
+#player-title2 {
+  font-weight: bold;
+  font-size: 1.4em;
 }
 
 .players-scoreboard {
