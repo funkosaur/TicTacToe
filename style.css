@@ -3,6 +3,8 @@
 }
 
 :root {
+  --ff: "Quicksand", sans-serif;
+
   --cultured1: #f8f9fa;
   --cultured: #e9ecef;
   --gainsboro: #dee2e6;
@@ -12,6 +14,19 @@
   --davys-gray: #495057;
   --gunmetal: #343a40;
   --charleston: #212529;
+
+  --gradient: linear-gradient(
+    90deg,
+    #212529,
+    #343a40,
+    #495057,
+    #6c757d,
+    #adb5bd,
+    #ced4da,
+    #dee2e6,
+    #e9ecef,
+    #f8f9fa
+  );
 }
 
 body {
@@ -21,15 +36,17 @@ body {
   height: 100%;
   width: 100%;
   color: var(--cultured1);
+  background-color: var(--charleston);
 }
 
 .header {
   grid-row: 1/2;
   grid-column: 1/6;
-  background-color: aqua;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: var(--ff);
+  font-weight: bold;
 }
 
 .header-name {
@@ -58,7 +75,6 @@ body {
 #score2 {
   height: 2.5em;
   width: 1.5em;
-  background-color: green;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,6 +82,7 @@ body {
   border: none;
   margin-top: 0.5em;
   font-size: 1.9em;
+  background-color: var(--davys-gray);
 }
 
 #player-title,
@@ -74,31 +91,63 @@ body {
   font-size: 1.4em;
 }
 
+select {
+  font-family: var(--ff);
+}
+
 .players-scoreboard {
   grid-row: 2/3;
   grid-column: 2/5;
-  background-color: blue;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: var(--ff);
+  font-weight: bold;
 }
 
 .start-game {
   grid-row: 3/4;
   grid-column: 3/4;
-  background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.start-game button {
+  background-color: var(--gunmetal);
+  border: none;
+  color: var(--cultured1);
+  font-weight: bold;
+  height: 70%;
+  width: 80%;
+  font-size: 1.2em;
+}
+
+button {
+  font-family: var(--ff);
+}
+
 .game-board-div {
+  height: 100%;
+  width: 100%;
   grid-row: 4/5;
   grid-column: 3/4;
-  background-color: green;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--gradient);
+  background-size: 500%;
+  background-position: left;
+  animation: gameboard-animation 5s infinite;
+}
+
+@keyframes gameboard-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
 }
 
 .game-board {
@@ -112,6 +161,7 @@ body {
     "middle-left middle-center middle-right"
     "bottom-left bottom-middle bottom-right";
   grid-gap: 0.2em;
+  border-color: var(--gunmetal);
 }
 
 #top-left {
@@ -151,27 +201,32 @@ body {
 }
 
 .top {
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid;
 }
 
 .middle {
-  border-top: 4px solid black;
-  border-bottom: 4px solid black;
+  border-top: 4px solid;
+  border-bottom: 4px solid;
+  border-color: var(--charleston);
 }
 
 .bottom {
-  border-top: 4px solid black;
+  border-top: 4px solid;
+  border-color: var(--charleston);
 }
 
 .left {
-  border-right: 4px solid black;
+  border-right: 4px solid;
+  border-color: var(--charleston);
 }
 
 .center {
-  border-left: 4px solid black;
-  border-right: 4px solid black;
+  border-left: 4px solid;
+  border-right: 4px solid;
+  border-color: var(--charleston);
 }
 
 .right {
-  border-left: 4px solid black;
+  border-left: 4px solid;
+  border-color: var(--charleston);
 }
