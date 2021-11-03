@@ -16,7 +16,9 @@
   --charleston: #212529;
 
   --gradient: linear-gradient(
-    90deg,
+    175deg,
+    #212529,
+    #212529,
     #212529,
     #343a40,
     #495057,
@@ -25,7 +27,9 @@
     #ced4da,
     #dee2e6,
     #e9ecef,
-    #f8f9fa
+    #f8f9fa,
+    #e9ecef,
+    #adb5bd
   );
 }
 
@@ -136,9 +140,9 @@ button {
   justify-content: center;
   align-items: center;
   background: var(--gradient);
-  background-size: 500%;
-  background-position: left;
-  animation: gameboard-animation 5s infinite;
+  background-size: 11000%;
+  background-position: top;
+  animation: gameboard-animation 3s infinite;
 }
 
 @keyframes gameboard-animation {
@@ -161,7 +165,6 @@ button {
     "middle-left middle-center middle-right"
     "bottom-left bottom-middle bottom-right";
   grid-gap: 0.2em;
-  border-color: var(--gunmetal);
 }
 
 #top-left {
