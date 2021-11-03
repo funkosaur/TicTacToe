@@ -16,7 +16,7 @@
   --charleston: #212529;
 
   --gradient: linear-gradient(
-    175deg,
+    178deg,
     #212529,
     #212529,
     #212529,
@@ -29,6 +29,8 @@
     #e9ecef,
     #f8f9fa,
     #e9ecef,
+    #adb5bd,
+    #adb5bd,
     #adb5bd
   );
 }
@@ -127,6 +129,12 @@ select {
   font-size: 1.2em;
 }
 
+.start-game button:hover {
+  background-color: var(--state-gray);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
 button {
   font-family: var(--ff);
 }
@@ -140,9 +148,10 @@ button {
   justify-content: center;
   align-items: center;
   background: var(--gradient);
-  background-size: 11000%;
+  background-size: 15000%;
   background-position: top;
-  animation: gameboard-animation 3s infinite;
+  animation: gameboard-animation 3s;
+  border-radius: 0.2em;
 }
 
 @keyframes gameboard-animation {
@@ -150,12 +159,12 @@ button {
     background-position: left;
   }
   100% {
-    background-position: right;
+    background-position: bottom;
   }
 }
 
 .game-board {
-  width: 70%;
+  width: 60%;
   height: 90%;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
