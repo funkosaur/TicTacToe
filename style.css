@@ -87,14 +87,14 @@ body {
   border-radius: 0.2em;
   border: none;
   margin-top: 0.5em;
-  font-size: 1.9em;
+  font-size: 1.9rem;
   background-color: var(--davys-gray);
 }
 
 #player-title,
 #player-title2 {
   font-weight: bold;
-  font-size: 1.4em;
+  font-size: 1.4rem;
 }
 
 select {
@@ -126,7 +126,7 @@ select {
   font-weight: bold;
   height: 70%;
   width: 80%;
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 .start-game button:hover {
@@ -139,6 +139,10 @@ button {
   font-family: var(--ff);
 }
 
+#sign {
+  margin-top: 0.5em;
+}
+
 .game-board-div {
   height: 100%;
   width: 100%;
@@ -148,8 +152,8 @@ button {
   justify-content: center;
   align-items: center;
   background: var(--gradient);
-  background-size: 15000%;
-  background-position: top;
+  background-size: 12000%;
+  background-position: left 1% bottom 2%;
   animation: gameboard-animation 3s;
   border-radius: 0.2em;
 }
@@ -174,6 +178,14 @@ button {
     "middle-left middle-center middle-right"
     "bottom-left bottom-middle bottom-right";
   grid-gap: 0.2em;
+}
+
+.board {
+  background-color: var(--state-gray);
+}
+
+.board:hover {
+  background-color: var(--davys-gray);
 }
 
 #top-left {
