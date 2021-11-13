@@ -186,6 +186,12 @@ button {
 
 .board {
   background-color: var(--state-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7vw;
+  font-family: var(--ff);
+  cursor: pointer;
 }
 
 .board:hover {

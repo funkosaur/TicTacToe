@@ -8,20 +8,39 @@ const gameBoard = (() => {
   const bottomLeft = document.querySelector("#bottom-left");
   const bottomMiddle = document.querySelector("#bottom-middle");
   const bottomRight = document.querySelector("#bottom-right");
-  const allGameFields = document.querySelectorAll(".board-field");
+  const allGameFields = document.querySelectorAll(".board");
+
+  let gameBoardArray = ["", "", "",
+                        "", "", "",
+                        "", "", ""];
+  
 
   allGameFields.forEach(field => {field.addEventListener("click", gamePlay)})
-
-  const gamePlay = () => {
+console.log(allGameFields)
+  function gamePlay () {
+    if(this.textContent == "X" || this.textContent == "O") return
+    console.log(allGameFields.indexOf(this))
+    this.textContent = "O";
     
   }
 
 
 
 
-  
 
 })();
+
+const playerOne = (() => {
+
+
+
+})();
+
+const playerTwo = (() => {
+
+
+})();
+
 
 
 const displayController = (() => {
