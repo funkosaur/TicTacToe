@@ -9,34 +9,77 @@ const gameBoard = (() => {
   const bottomMiddle = document.querySelector("#bottom-middle");
   const bottomRight = document.querySelector("#bottom-right");
   const allGameFields = document.querySelectorAll(".board");
+  const allGameFieldsArray = Array.from(allGameFields);
 
-  let gameBoardArray = ["", "", "",
-                        "", "", "",
-                        "", "", ""];
-  
+
+  let gameBoardArray = ["0", "1", "2",
+                        "3", "4", "5",
+                        "6", "7", "8"];         
+                                             
+
 
   allGameFields.forEach(field => {field.addEventListener("click", gamePlay)})
-console.log(allGameFields)
+
+
   function gamePlay () {
+    console.log(gameBoardArray)
+
     if(this.textContent == "X" || this.textContent == "O") return
-    console.log(allGameFields.indexOf(this))
-    this.textContent = "O";
+
+    let sign;
+
+    if(playerOne.turn == 0){
+      sign = "O"
+    } else { sign = "X" }
+
+    let selectedField = allGameFieldsArray.indexOf(this);
+
+    gameBoardArray[selectedField] = sign;
+
+    this.textContent = sign;
+
+    if(playerOne.turn == 0){
+       playerOne.turn = 1
+    } else { playerOne.turn = 0} 
+
+    console.log(gameFunction())
     
   }
 
+  //staj im sign na playerone two i computer za da znaeme koj pobedil
 
+  function gameFunction () {
+    if(gameBoardArray[0] === gameBoardArray[1] && gameBoardArray[1] === gameBoardArray[2]) {return 1}
+    else if(gameBoardArray[3] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[5]) {return 2}
+    else if(gameBoardArray[6] === gameBoardArray[7] && gameBoardArray[7] === gameBoardArray[8]) {return 3}
+    else if(gameBoardArray[0] === gameBoardArray[3] && gameBoardArray[3] === gameBoardArray[6]) {return 4}
+    else if(gameBoardArray[1] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[7]) {return 5}
+    else if(gameBoardArray[2] === gameBoardArray[5] && gameBoardArray[5] === gameBoardArray[8]) {return 6}
+    else if(gameBoardArray[0] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[8]) {return 7}
+    else if(gameBoardArray[2] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[6]) {return 8}
+    else {return 0}
+
+    
+    
+  }
 
 
 
 })();
 
 const playerOne = (() => {
+  let turn = 1;
 
+
+  return {turn}
+})();
+
+const playerTwo = (() => {
 
 
 })();
 
-const playerTwo = (() => {
+const computerOne = (() => {
 
 
 })();
