@@ -46,22 +46,35 @@ const gameBoard = (() => {
     
   }
 
+
+
+ function gameFunction () {
+  gameBoardArray.forEach((field, index) => {
+    if(index == 0 || index == 3 || index == 6) {
+      if(gameBoardArray[index + 1] == field && gameBoardArray[index + 2] == field){ return "1"}
+    }
+
+    if(index == 0 || index == 1 || index == 2) {
+      if(gameBoardArray[index + 3] == field && gameBoardArray[index + 6] == field){ return "1"}
+    }
+
+    if(index == 0) {
+      if(gameBoardArray[index + 4] == field && gameBoardArray[index + 8] == field){ return "1"}
+    }
+
+    if(index == 2) {
+      if(gameBoardArray[index + 2] == field && gameBoardArray[index + 4] == field){ return "1"}
+    }
+  })
+
+ }
+
+
+
+
   //staj im sign na playerone two i computer za da znaeme koj pobedil
 
-  function gameFunction () {
-    if(gameBoardArray[0] === gameBoardArray[1] && gameBoardArray[1] === gameBoardArray[2]) {return 1}
-    else if(gameBoardArray[3] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[5]) {return 2}
-    else if(gameBoardArray[6] === gameBoardArray[7] && gameBoardArray[7] === gameBoardArray[8]) {return 3}
-    else if(gameBoardArray[0] === gameBoardArray[3] && gameBoardArray[3] === gameBoardArray[6]) {return 4}
-    else if(gameBoardArray[1] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[7]) {return 5}
-    else if(gameBoardArray[2] === gameBoardArray[5] && gameBoardArray[5] === gameBoardArray[8]) {return 6}
-    else if(gameBoardArray[0] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[8]) {return 7}
-    else if(gameBoardArray[2] === gameBoardArray[4] && gameBoardArray[4] === gameBoardArray[6]) {return 8}
-    else {return 0}
-
-    
-    
-  }
+  
 
 
 
