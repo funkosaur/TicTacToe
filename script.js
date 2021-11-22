@@ -42,7 +42,7 @@ const gameBoard = (() => {
        playerOne.turn = 1
     } else { playerOne.turn = 0} 
 
-    console.log(gameFunction())
+    gameFunction()
     
   }
 
@@ -51,7 +51,9 @@ const gameBoard = (() => {
  function gameFunction () {
   gameBoardArray.forEach((field, index) => {
     if(index == 0 || index == 3 || index == 6) {
-      if(gameBoardArray[index + 1] == field && gameBoardArray[index + 2] == field){ return "1"}
+      if(gameBoardArray[index + 1] == field && gameBoardArray[index + 2] == field){ allGameFieldsArray[index].style.backgroundColor = "green"
+                                                                                    allGameFieldsArray[index + 1].style.backgroundColor = "green"
+                                                                                    allGameFieldsArray[index + 2].style.backgroundColor = "green"}
     }
 
     if(index == 0 || index == 1 || index == 2) {
@@ -71,7 +73,6 @@ const gameBoard = (() => {
 
 
 
-
   //staj im sign na playerone two i computer za da znaeme koj pobedil
 
   
@@ -88,6 +89,11 @@ const playerOne = (() => {
 })();
 
 const playerTwo = (() => {
+
+  let sign
+
+  if(playerOne.sign == "X"){ sign = "O"}
+  else { sign = "X" }
 
 
 })();
