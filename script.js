@@ -10,6 +10,9 @@ const gameBoard = (() => {
   const bottomRight = document.querySelector("#bottom-right");
   const allGameFields = document.querySelectorAll(".board");
   const allGameFieldsArray = Array.from(allGameFields);
+  const startButton = document.querySelector(".start");
+  const gameBoardDiv = document.querySelector(".game-board-div");
+  const startAgainButton = document.querySelector(".start-again");
 
 
   let gameBoardArray = ["0", "1", "2",
@@ -22,11 +25,10 @@ const gameBoard = (() => {
 
 
   function gamePlay () {
-    console.log(gameBoardArray)
+    
+    if(startButton.style.display == "") return
 
     if(this.textContent == "X" || this.textContent == "O") return
-
-    let sign;
 
     if(playerOne.turn == 0){
       sign = "O"
@@ -51,25 +53,58 @@ const gameBoard = (() => {
  function gameFunction () {
   gameBoardArray.forEach((field, index) => {
     if(index == 0 || index == 3 || index == 6) {
-      if(gameBoardArray[index + 1] == field && gameBoardArray[index + 2] == field){ allGameFieldsArray[index].style.backgroundColor = "green"
-                                                                                    allGameFieldsArray[index + 1].style.backgroundColor = "green"
-                                                                                    allGameFieldsArray[index + 2].style.backgroundColor = "green"}
+      if(gameBoardArray[index + 1] == field && gameBoardArray[index + 2] == field){ 
+      allGameFieldsArray[index].style.backgroundColor = "green"                                                                           
+      allGameFieldsArray[index + 1].style.backgroundColor = "green"                                                                                   
+      allGameFieldsArray[index + 2].style.backgroundColor = "green"
+      startAgainButton.style.display = "block"}
     }
 
     if(index == 0 || index == 1 || index == 2) {
-      if(gameBoardArray[index + 3] == field && gameBoardArray[index + 6] == field){ return "1"}
+      if(gameBoardArray[index + 3] == field && gameBoardArray[index + 6] == field){ 
+      allGameFieldsArray[index].style.backgroundColor = "green"
+      allGameFieldsArray[index + 3].style.backgroundColor = "green"
+      allGameFieldsArray[index + 6].style.backgroundColor = "green"
+      startAgainButton.style.display = "block"}
     }
 
     if(index == 0) {
-      if(gameBoardArray[index + 4] == field && gameBoardArray[index + 8] == field){ return "1"}
+      if(gameBoardArray[index + 4] == field && gameBoardArray[index + 8] == field){ 
+      allGameFieldsArray[index].style.backgroundColor = "green"
+      allGameFieldsArray[index + 4].style.backgroundColor = "green"
+      allGameFieldsArray[index + 8].style.backgroundColor = "green"
+      startAgainButton.style.display = "block"}
     }
 
     if(index == 2) {
-      if(gameBoardArray[index + 2] == field && gameBoardArray[index + 4] == field){ return "1"}
+      if(gameBoardArray[index + 2] == field && gameBoardArray[index + 4] == field){ 
+      allGameFieldsArray[index].style.backgroundColor = "green"
+      allGameFieldsArray[index + 2].style.backgroundColor = "green"
+      allGameFieldsArray[index + 4].style.backgroundColor = "green"
+      startAgainButton.style.display = "block"}
     }
   })
 
  }
+
+ function startAgain() {
+   console.log(allGameFields)
+
+   allGameFields.forEach(field => {field.style.backgroundColor = "var(--state-gray)"})
+
+   allGameFields.forEach(field => {field.textContent = ""})
+
+   gameBoardArray = ["0", "1", "2",
+                     "3", "4", "5",
+                     "6", "7", "8"];
+
+   startAgainButton.style.display = "none"
+
+ }
+
+ startAgainButton.addEventListener("click", startAgain)
+
+
 
 
 
@@ -83,6 +118,7 @@ const gameBoard = (() => {
 
 const playerOne = (() => {
   let turn = 1;
+  
 
 
   return {turn}

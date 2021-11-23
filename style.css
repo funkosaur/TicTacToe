@@ -144,6 +144,10 @@ button {
   font-family: var(--ff);
 }
 
+.start-again {
+  display: none;
+}
+
 #sign {
   margin-top: 0.5em;
 }
