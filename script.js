@@ -48,47 +48,44 @@ const gameBoard = (() => {
     
   }
 
+  function whenGameWon ( originalField, firstField, secondField) {
+    originalField.style.backgroundColor = "green";                                                                           
+    firstField.style.backgroundColor = "green";                                                                                
+    secondField.style.backgroundColor = "green";
+    startAgainButton.style.display = "block";
+    
+  }
+
 
 
  function gameFunction () {
+
   gameBoardArray.forEach((field, index) => {
+
     if(index == 0 || index == 3 || index == 6) {
       if(gameBoardArray[index + 1] == field && gameBoardArray[index + 2] == field){ 
-      allGameFieldsArray[index].style.backgroundColor = "green"                                                                           
-      allGameFieldsArray[index + 1].style.backgroundColor = "green"                                                                                   
-      allGameFieldsArray[index + 2].style.backgroundColor = "green"
-      startAgainButton.style.display = "block"}
+      whenGameWon(allGameFieldsArray[index], allGameFieldsArray[index + 1], allGameFieldsArray[index + 2])}
     }
 
     if(index == 0 || index == 1 || index == 2) {
       if(gameBoardArray[index + 3] == field && gameBoardArray[index + 6] == field){ 
-      allGameFieldsArray[index].style.backgroundColor = "green"
-      allGameFieldsArray[index + 3].style.backgroundColor = "green"
-      allGameFieldsArray[index + 6].style.backgroundColor = "green"
-      startAgainButton.style.display = "block"}
+        whenGameWon(allGameFieldsArray[index], allGameFieldsArray[index + 3], allGameFieldsArray[index + 6])}
     }
 
     if(index == 0) {
       if(gameBoardArray[index + 4] == field && gameBoardArray[index + 8] == field){ 
-      allGameFieldsArray[index].style.backgroundColor = "green"
-      allGameFieldsArray[index + 4].style.backgroundColor = "green"
-      allGameFieldsArray[index + 8].style.backgroundColor = "green"
-      startAgainButton.style.display = "block"}
+        whenGameWon(allGameFieldsArray[index], allGameFieldsArray[index + 4], allGameFieldsArray[index + 8])}
     }
 
     if(index == 2) {
       if(gameBoardArray[index + 2] == field && gameBoardArray[index + 4] == field){ 
-      allGameFieldsArray[index].style.backgroundColor = "green"
-      allGameFieldsArray[index + 2].style.backgroundColor = "green"
-      allGameFieldsArray[index + 4].style.backgroundColor = "green"
-      startAgainButton.style.display = "block"}
+        whenGameWon(allGameFieldsArray[index], allGameFieldsArray[index + 2], allGameFieldsArray[index + 4])}
     }
   })
 
  }
 
  function startAgain() {
-   console.log(allGameFields)
 
    allGameFields.forEach(field => {field.style.backgroundColor = "var(--state-gray)"})
 
