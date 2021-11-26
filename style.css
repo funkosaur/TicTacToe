@@ -28,10 +28,9 @@
     #dee2e6,
     #e9ecef,
     #f8f9fa,
-    #e9ecef,
     #adb5bd,
-    #adb5bd,
-    #adb5bd
+    #f8f9fa,
+    #f8f9fa
   );
 }
 
@@ -85,10 +84,9 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 0.2em;
-  border: none;
   margin-top: 0.5em;
   font-size: 1.9rem;
-  background-color: var(--davys-gray);
+  background: var(--davys-gray);
 }
 
 #player-title,
@@ -161,7 +159,7 @@ button {
   justify-content: center;
   align-items: center;
   background: var(--gradient);
-  background-size: 12000%;
+  background-size: 11000%;
   background-position: left 1% bottom 2%;
   border-radius: 0.2em;
 }
