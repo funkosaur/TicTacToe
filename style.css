@@ -113,6 +113,14 @@ select {
   font-weight: bold;
 }
 
+.choose-player {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .start-game {
   grid-row: 3/4;
   grid-column: 3/4;
@@ -144,6 +152,18 @@ button {
 
 .start-again {
   display: none;
+  background-color: var(--gunmetal);
+  border: none;
+  color: var(--cultured1);
+  font-weight: bold;
+  padding: 0.5rem 4rem;
+  font-size: 1rem;
+}
+
+.start-again:hover {
+  background-color: var(--state-gray);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 #sign {

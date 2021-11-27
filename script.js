@@ -5,6 +5,8 @@ const gameBoard = (() => {
   const startAgainButton = document.querySelector(".start-again");
   const playerOneScore = document.querySelector("#score1");
   const playerTwoScore = document.querySelector("#score2");
+  const audio1 = document.querySelector("#audio1");
+  const audio2 = document.querySelector("#audio2");
 
 
   let gameBoardArray = ["0", "1", "2",
@@ -28,9 +30,11 @@ const gameBoard = (() => {
     if(playerOne.turn == 0){
       gameBoardArray[selectedField] = playerTwo.sign;
       this.textContent = playerTwo.sign;
+      audio2.play();
     } else { 
       gameBoardArray[selectedField] = playerOne.sign;
-      this.textContent = playerOne.sign; 
+      this.textContent = playerOne.sign;
+      audio1.play();
     }
 
     if(playerOne.turn == 0){
@@ -102,7 +106,7 @@ const gameBoard = (() => {
 
 
 
-  //audio ushte da napraish da komentirash i mozebi computer da napraish
+  //za izednaceno
 
   
 
@@ -138,14 +142,14 @@ const displayController = (() => {
   
   const startButton = document.querySelector(".start");
   const gameBoardDiv = document.querySelector(".game-board-div");
-  const allGameFields = document.querySelectorAll(".board");
   const choosePlayersDiv = document.querySelector(".choose-players");
   const gameState = document.querySelector(".game-state");
   const chooseOneToPlay = document.querySelector("#choose-one");
-  const textForChoosing = document.querySelector("#label-choose");
   const playerOneScore = document.querySelector("#score1");
   const playerTwoScore = document.querySelector("#score2");
   const startAgainButton = document.querySelector(".start-again");
+  const whoseTurnDiv = document.querySelector(".whose-turn-is-it");
+  const choosePlayer = document.querySelector(".choose-player");
 
   
 
@@ -162,6 +166,7 @@ const displayController = (() => {
     gameBoardDiv.style.backgroundPosition = "left 50% bottom 50%";
     startButton.style.display = "none";
     choosePlayersDiv.style.display = "none";
+    choosePlayer.style.justifyContent = "space-evenly";
     gameState.style.display = "block";
     setTimeout(function(){ gameState.style.display = "none" }, 3000);
     whoseTurnIsIt ()
@@ -173,18 +178,24 @@ const displayController = (() => {
     secondField.style.backgroundColor = "green";
     startAgainButton.style.display = "block";
     console.log(originalField.textContent)
-    if(originalField.textContent == "X") playerOne.score += 1 ;
-    if(originalField.textContent == "O") playerTwo.score += 1;
+    if(originalField.textContent == "X") {playerOne.score += 1; whoseTurnDiv.textContent = "Player One Wins"}
+    if(originalField.textContent == "O") {playerTwo.score += 1; whoseTurnDiv.textContent = "Player Two Wins"}
     playerOneScore.textContent = playerOne.score;
     playerTwoScore.textContent = playerTwo.score;
   }
 
   function whoseTurnIsIt () {
     
-    if(playerOne.turn == 1) {playerOneScore.style.boxShadow = "0px 0px 5px #f8f9fa"}
-    else{playerOneScore.style.boxShadow = ""}
-    if(playerOne.turn == 0) {playerTwoScore.style.boxShadow = "0px 0px 5px #f8f9fa"} 
-    else{playerTwoScore.style.boxShadow = ""}
+    if(playerOne.turn == 1) {
+      playerOneScore.style.boxShadow = "0px 0px 5px #f8f9fa";
+      whoseTurnDiv.textContent = "<- Player One's Turn";
+    } else{
+      playerOneScore.style.boxShadow = "";}
+    if(playerOne.turn == 0) {
+      playerTwoScore.style.boxShadow = "0px 0px 5px #f8f9fa"
+      whoseTurnDiv.textContent = "Player Two's Turn ->";
+    } else{
+      playerTwoScore.style.boxShadow = "";}
   }
 
   return {whenGameWon, whoseTurnIsIt}
