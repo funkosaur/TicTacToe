@@ -53,6 +53,11 @@ const gameBoard = (() => {
 
 
  function gameFunction () {
+   const checkNumbers = ["1", "2", "3", "4", "5", "6", "7", "8"];
+
+   if(!gameBoardArray.some(checkNumbers)){
+    displayController.whenTie()
+}
 
   gameBoardArray.forEach((field, index) => {
 
@@ -184,6 +189,11 @@ const displayController = (() => {
     playerTwoScore.textContent = playerTwo.score;
   }
 
+  function whenTie () {
+    startAgainButton.style.display = "block";
+    whoseTurnDiv.textContent = "Player One Wins"
+  }
+
   function whoseTurnIsIt () {
     
     if(playerOne.turn == 1) {
@@ -198,7 +208,7 @@ const displayController = (() => {
       playerTwoScore.style.boxShadow = "";}
   }
 
-  return {whenGameWon, whoseTurnIsIt}
+  return {whenGameWon, whoseTurnIsIt, whenTie}
 
 
 })();
