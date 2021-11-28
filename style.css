@@ -193,6 +193,25 @@ button {
   }
 }
 
+@keyframes gameboard-animation2 {
+  0% {
+    background-position: bottom;
+  }
+  100% {
+    background-position: left;
+  }
+}
+
+.reset-game {
+  display: none;
+  background-color: var(--gunmetal);
+  border: none;
+  color: var(--cultured1);
+  font-weight: bold;
+  padding: 0.5rem 4rem;
+  font-size: 1rem;
+}
+
 .game-board {
   width: 60%;
   height: 90%;

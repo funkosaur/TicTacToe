@@ -3,12 +3,12 @@ const gameBoard = (() => {
   const allGameFieldsArray = Array.from(allGameFields);
   const startButton = document.querySelector(".start");
   const startAgainButton = document.querySelector(".start-again");
-  const playerOneScore = document.querySelector("#score1");
-  const playerTwoScore = document.querySelector("#score2");
   const audio1 = document.querySelector("#audio1");
   const audio2 = document.querySelector("#audio2");
+  const whoseTurnDiv = document.querySelector(".whose-turn-is-it");
+  const resetGameButton = document.querySelector(".reset-game");
 
-
+//if won won for good cant place anything else there
   let gameBoardArray = ["0", "1", "2",
                         "3", "4", "5",
                         "6", "7", "8"];         
@@ -20,7 +20,7 @@ const gameBoard = (() => {
 
   function gamePlay () {
     
-    if(startButton.style.display == "") return
+    if(startButton.style.display == "block") return
 
     if(this.textContent == "X" || this.textContent == "O") return
 
@@ -43,7 +43,7 @@ const gameBoard = (() => {
 
     gameFunction()
 
-    if(this.style.backgroundColor == "green") return
+    if(this.style.backgroundColor == "green" || whoseTurnDiv.textContent == "It's a Tie") return
 
     displayController.whoseTurnIsIt ()
     
@@ -55,9 +55,13 @@ const gameBoard = (() => {
  function gameFunction () {
    const checkNumbers = ["1", "2", "3", "4", "5", "6", "7", "8"];
 
-   if(!gameBoardArray.some(checkNumbers)){
-    displayController.whenTie()
-}
+   const ifTie = gameBoardArray.some(function(field){
+     if(checkNumbers.includes(field)) return true
+   });
+   
+   if(ifTie == false) {
+     displayController.whenTie()
+   }
 
   gameBoardArray.forEach((field, index) => {
 
@@ -101,21 +105,19 @@ const gameBoard = (() => {
    if (randomNumber == 0) playerOne.turn = 0;
    if (randomNumber == 1) playerOne.turn = 1;
 
+   resetGameButton.style.display = "";
+
    displayController.whoseTurnIsIt ()
 
  }
 
- startAgainButton.addEventListener("click", startAgain)
+ startAgainButton.addEventListener("click", startAgain);
 
+ startButton.addEventListener("click", () => {gameBoardArray = ["0", "1", "2",
+ "3", "4", "5",
+ "6", "7", "8"]});
 
-
-
-
-  //za izednaceno
-
-  
-
- return {startAgain}
+ return {startAgain, allGameFields, gameBoardArray}
 
 })();
 
@@ -155,6 +157,7 @@ const displayController = (() => {
   const startAgainButton = document.querySelector(".start-again");
   const whoseTurnDiv = document.querySelector(".whose-turn-is-it");
   const choosePlayer = document.querySelector(".choose-player");
+  const resetGameButton = document.querySelector(".reset-game");
 
   
 
@@ -182,16 +185,19 @@ const displayController = (() => {
     firstField.style.backgroundColor = "green";                                                                                
     secondField.style.backgroundColor = "green";
     startAgainButton.style.display = "block";
-    console.log(originalField.textContent)
     if(originalField.textContent == "X") {playerOne.score += 1; whoseTurnDiv.textContent = "Player One Wins"}
     if(originalField.textContent == "O") {playerTwo.score += 1; whoseTurnDiv.textContent = "Player Two Wins"}
     playerOneScore.textContent = playerOne.score;
     playerTwoScore.textContent = playerTwo.score;
+    resetGameButton.style.display = "block";
   }
 
   function whenTie () {
     startAgainButton.style.display = "block";
-    whoseTurnDiv.textContent = "Player One Wins"
+    whoseTurnDiv.textContent = "It's a Tie";
+    playerOneScore.style.boxShadow = "0px 0px 5px #f8f9fa";
+    playerTwoScore.style.boxShadow = "0px 0px 5px #f8f9fa";
+    resetGameButton.style.display = "block";
   }
 
   function whoseTurnIsIt () {
@@ -208,7 +214,30 @@ const displayController = (() => {
       playerTwoScore.style.boxShadow = "";}
   }
 
+  function resetGame () {
+    gameBoardDiv.style.animation = "gameboard-animation2 3s";
+    gameBoardDiv.style.backgroundPosition = "left 1% bottom 2%";
+    startButton.style.display = "block";
+    choosePlayersDiv.style.display = "block";
+    choosePlayer.style.justifyContent = "center";
+    
+    gameBoard.allGameFields.forEach(field => {field.style.backgroundColor = "var(--state-gray)"});
+
+    gameBoard.allGameFields.forEach(field => {field.textContent = ""});
+
+    startAgainButton.style.display = "";
+    resetGameButton.style.display = "";
+
+    playerOne.score = 0;
+    playerTwo.score = 0;
+    playerOneScore.textContent = playerOne.score;
+    playerTwoScore.textContent = playerTwo.score;
+    whoseTurnDiv.textContent = "";
+    playerOneScore.style.boxShadow = "";
+    playerTwoScore.style.boxShadow = "";
+  }
+
+  resetGameButton.addEventListener("click", resetGame)
+
   return {whenGameWon, whoseTurnIsIt, whenTie}
-
-
 })();
