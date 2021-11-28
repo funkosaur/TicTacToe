@@ -24,6 +24,8 @@ const gameBoard = (() => {
 
     if(this.textContent == "X" || this.textContent == "O") return
 
+    if(whoseTurnDiv.textContent == "Player One Wins" || whoseTurnDiv.textContent == "Player Two Wins") return
+ 
 
     let selectedField = allGameFieldsArray.indexOf(this);
 

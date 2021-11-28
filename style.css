@@ -116,6 +116,7 @@ select {
 .choose-player {
   display: flex;
   height: 100%;
+  width: 15em;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -156,11 +157,13 @@ button {
   border: none;
   color: var(--cultured1);
   font-weight: bold;
-  padding: 0.5rem 4rem;
+  width: 100%;
+  height: 2.3em;
   font-size: 1rem;
 }
 
-.start-again:hover {
+.start-again:hover,
+.reset-game:hover {
   background-color: var(--state-gray);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -208,7 +211,8 @@ button {
   border: none;
   color: var(--cultured1);
   font-weight: bold;
-  padding: 0.5rem 4rem;
+  width: 100%;
+  height: 2.3em;
   font-size: 1rem;
 }
 
@@ -304,4 +308,15 @@ button {
 .right {
   border-left: 4px solid;
   border-color: var(--charleston);
+}
+
+@media only screen and (max-width: 1300px) {
+  .game-board-div {
+    grid-column: 2/5;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .game-board-div {
+    grid-column: 1/6;
+  }
 }
