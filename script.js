@@ -160,6 +160,19 @@ const displayController = (() => {
   const whoseTurnDiv = document.querySelector(".whose-turn-is-it");
   const choosePlayer = document.querySelector(".choose-player");
   const resetGameButton = document.querySelector(".reset-game");
+  const playerTitles = document.querySelectorAll(".player-title");
+
+  playerTitles.forEach(title => {title.addEventListener("keypress", (e)=>{
+    
+    if(title.textContent.length > 8){
+      e.preventDefault()
+    }
+
+    if(e.keyCode === 13){
+      e.preventDefault()
+    }
+  
+  })})
 
   
 
@@ -211,7 +224,7 @@ const displayController = (() => {
       playerOneScore.style.boxShadow = "";}
     if(playerOne.turn == 0) {
       playerTwoScore.style.boxShadow = "0px 0px 5px #f8f9fa"
-      whoseTurnDiv.textContent = "Player Two's Turn ->";
+      whoseTurnDiv.textContent = "  Two's Turn ->";
     } else{
       playerTwoScore.style.boxShadow = "";}
   }
@@ -220,7 +233,7 @@ const displayController = (() => {
     gameBoardDiv.style.animation = "gameboard-animation2 3s";
     gameBoardDiv.style.backgroundPosition = "left 1% bottom 2%";
     startButton.style.display = "block";
-    choosePlayersDiv.style.display = "block";
+    choosePlayersDiv.style.display = "flex";
     choosePlayer.style.justifyContent = "center";
     
     gameBoard.allGameFields.forEach(field => {field.style.backgroundColor = "var(--state-gray)"});

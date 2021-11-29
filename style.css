@@ -68,12 +68,14 @@ body {
   align-items: center;
   justify-content: center;
   height: 100%;
+  max-width: 12em;
 }
 
 .player-2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 12em;
 }
 
 #score1,
@@ -89,10 +91,11 @@ body {
   background: var(--davys-gray);
 }
 
-#player-title,
-#player-title2 {
+.player-title {
   font-weight: bold;
   font-size: 1.4rem;
+  overflow-wrap: break-word;
+  width: 100%;
 }
 
 select {
@@ -120,6 +123,13 @@ select {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.choose-players {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
 }
 
 .start-game {
@@ -318,5 +328,45 @@ button {
 @media only screen and (max-width: 1000px) {
   .game-board-div {
     grid-column: 1/6;
+  }
+  .board {
+    font-size: 10vw;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .game-board {
+    width: 70%;
+  }
+  .board {
+    font-size: 13vw;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .players-scoreboard {
+    grid-column: 1/6;
+  }
+  .choose-player {
+    width: 10em;
+  }
+  .choose-players {
+    display: flex;
+    flex-direction: column;
+  }
+  .game-board {
+    width: 90%;
+  }
+  .board {
+    font-size: 20vw;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .player-1 {
+    max-width: 7em;
+  }
+  .player-2 {
+    max-width: 7em;
   }
 }
