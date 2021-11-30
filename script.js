@@ -161,10 +161,13 @@ const displayController = (() => {
   const choosePlayer = document.querySelector(".choose-player");
   const resetGameButton = document.querySelector(".reset-game");
   const playerTitles = document.querySelectorAll(".player-title");
+  const changeNameDiv = document.querySelector(".change-name");
+
+  setTimeout(function(){ changeNameDiv.style.display = "none"; }, 4000);
 
   playerTitles.forEach(title => {title.addEventListener("keypress", (e)=>{
     
-    if(title.textContent.length > 8){
+    if(title.textContent.length > 9){
       e.preventDefault()
     }
 
