@@ -248,7 +248,7 @@ const displayController = (() => {
       playerOneScore.style.boxShadow = "";}
     if(playerOne.turn == 0) {
       playerTwoScore.style.boxShadow = "0px 0px 5px #f8f9fa"
-      whoseTurnDiv.textContent = " Player Two's Turn ->";
+      whoseTurnDiv.textContent = "Player Two's Turn ->";
     } else{
       playerTwoScore.style.boxShadow = "";}
   }
