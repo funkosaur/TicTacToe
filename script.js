@@ -9,7 +9,7 @@ const gameBoard = (() => {
   const resetGameButton = document.querySelector(".reset-game");
   const chooseOneToPlay = document.querySelector("#choose-one");
 
-
+//main game board array
   let gameBoardArray = ["0", "1", "2",
                         "3", "4", "5",
                         "6", "7", "8"];         
@@ -18,7 +18,7 @@ const gameBoard = (() => {
 
   allGameFields.forEach(field => {field.addEventListener("click", gamePlay)})
 
-
+//gamePlay function when clicked adds X or O to selected field changes gameboardarray accordingly and switches turns of players
   function gamePlay () {
     
     if(startButton.style.display == "block") return
@@ -54,6 +54,7 @@ const gameBoard = (() => {
     
   }
 
+// computer selects random field to place O
   function computerPlays () {
     let randomNumber = Math.floor(Math.random() * 9);
     while(gameBoardArray[randomNumber] == "X" || gameBoardArray[randomNumber] == "O") {randomNumber = Math.floor(Math.random() * 9);}
@@ -61,10 +62,7 @@ const gameBoard = (() => {
     allGameFieldsArray[randomNumber].click()
     audio2.play();
   }
-
-
-
-
+// main function to check for win or tie requirements and subsequently reward winning player
  function gameFunction () {
    const checkNumbers = ["1", "2", "3", "4", "5", "6", "7", "8"];
 
@@ -101,6 +99,7 @@ const gameBoard = (() => {
 
  }
 
+// another round button resets fields, array adjusted for computer and randomizes turns
  function startAgain() {
 
    allGameFields.forEach(field => {field.style.backgroundColor = "var(--state-gray)"})
@@ -145,8 +144,6 @@ const playerOne = (() => {
   let sign = "X";
   let score = 0;
   
-
-
   return {turn, sign, score}
 })();
 
@@ -156,13 +153,6 @@ let score = 0;
 
 return{sign, score}
 })();
-
-const computerOne = (() => {
-
-
-})();
-
-
 
 const displayController = (() => {
   
@@ -181,6 +171,7 @@ const displayController = (() => {
   const changeNameDiv = document.querySelector(".change-name");
   const player2Title = document.querySelector("#player-title2")
 
+// selecting to play with player 2 or computer
   chooseOneToPlay.addEventListener("change", () => {
     if(chooseOneToPlay.value == "computer") {
       player2Title.textContent = "Computer";
@@ -193,6 +184,7 @@ const displayController = (() => {
 
   setTimeout(function(){ changeNameDiv.style.display = "none"; }, 4000);
 
+//change name functionality
   playerTitles.forEach(title => {title.addEventListener("keypress", (e)=>{
     
     if(title.textContent.length > 9){
@@ -206,7 +198,7 @@ const displayController = (() => {
   })})
 
   
-
+// starting to play changing display
   startButton.addEventListener("click", () => {
 
     if(chooseOneToPlay.value == "notchosen") {
@@ -225,7 +217,7 @@ const displayController = (() => {
     setTimeout(function(){ gameState.style.display = "none" }, 3000);
     whoseTurnIsIt ()
   });
-
+// change display when somebody wins
   function whenGameWon ( originalField, firstField, secondField) {
     originalField.style.backgroundColor = "green";                                                                           
     firstField.style.backgroundColor = "green";                                                                                
@@ -238,7 +230,7 @@ const displayController = (() => {
     playerTwoScore.textContent = playerTwo.score;
     resetGameButton.style.display = "block";
   }
-
+// display for a tie
   function whenTie () {
     startAgainButton.style.display = "block";
     whoseTurnDiv.textContent = "It's a Tie";
@@ -246,7 +238,7 @@ const displayController = (() => {
     playerTwoScore.style.boxShadow = "0px 0px 5px #f8f9fa";
     resetGameButton.style.display = "block";
   }
-
+// display for different turns
   function whoseTurnIsIt () {
     
     if(playerOne.turn == 1) {
@@ -256,11 +248,11 @@ const displayController = (() => {
       playerOneScore.style.boxShadow = "";}
     if(playerOne.turn == 0) {
       playerTwoScore.style.boxShadow = "0px 0px 5px #f8f9fa"
-      whoseTurnDiv.textContent = "  Two's Turn ->";
+      whoseTurnDiv.textContent = " Player Two's Turn ->";
     } else{
       playerTwoScore.style.boxShadow = "";}
   }
-
+// changing display and functionalities to reset the whole game to beginning
   function resetGame () {
     gameBoardDiv.style.animation = "gameboard-animation2 3s";
     gameBoardDiv.style.backgroundPosition = "left 1% bottom 2%";
@@ -277,6 +269,7 @@ const displayController = (() => {
 
     playerOne.score = 0;
     playerTwo.score = 0;
+    playerOne.turn = 1
     playerOneScore.textContent = playerOne.score;
     playerTwoScore.textContent = playerTwo.score;
     whoseTurnDiv.textContent = "";

@@ -160,12 +160,6 @@ select {
   font-size: 1.2rem;
 }
 
-.start-game button:hover {
-  background-color: var(--state-gray);
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
 button {
   font-family: var(--ff);
 }
@@ -182,7 +176,8 @@ button {
 }
 
 .start-again:hover,
-.reset-game:hover {
+.reset-game:hover,
+.start-game button:hover {
   background-color: var(--state-gray);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -190,6 +185,12 @@ button {
 
 #sign {
   margin-top: 0.5em;
+}
+
+.whose-turn-is-it {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-board-div {
@@ -204,6 +205,7 @@ button {
   background-size: 11000%;
   background-position: left 1% bottom 2%;
   border-radius: 0.2em;
+  overflow: hidden;
 }
 
 @keyframes gameboard-animation {
