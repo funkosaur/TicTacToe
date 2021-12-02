@@ -7,8 +7,9 @@ const gameBoard = (() => {
   const audio2 = document.querySelector("#audio2");
   const whoseTurnDiv = document.querySelector(".whose-turn-is-it");
   const resetGameButton = document.querySelector(".reset-game");
+  const chooseOneToPlay = document.querySelector("#choose-one");
 
-//if won won for good cant place anything else there
+
   let gameBoardArray = ["0", "1", "2",
                         "3", "4", "5",
                         "6", "7", "8"];         
@@ -24,7 +25,7 @@ const gameBoard = (() => {
 
     if(this.textContent == "X" || this.textContent == "O") return
 
-    if(whoseTurnDiv.textContent == "Player One Wins" || whoseTurnDiv.textContent == "Player Two Wins") return
+    if(whoseTurnDiv.textContent == "Player One Wins" || whoseTurnDiv.textContent == "Player Two Wins" || whoseTurnDiv.textContent == "Computer Wins") return
  
 
     let selectedField = allGameFieldsArray.indexOf(this);
@@ -47,8 +48,18 @@ const gameBoard = (() => {
 
     if(this.style.backgroundColor == "green" || whoseTurnDiv.textContent == "It's a Tie") return
 
-    displayController.whoseTurnIsIt ()
+    displayController.whoseTurnIsIt ();
+
+    if(chooseOneToPlay.value == "computer" && playerOne.turn == 0) computerPlays()
     
+  }
+
+  function computerPlays () {
+    let randomNumber = Math.floor(Math.random() * 9);
+    while(gameBoardArray[randomNumber] == "X" || gameBoardArray[randomNumber] == "O") {randomNumber = Math.floor(Math.random() * 9);}
+    gameBoardArray[randomNumber] = playerTwo.sign
+    allGameFieldsArray[randomNumber].click()
+    audio2.play();
   }
 
 
@@ -102,12 +113,18 @@ const gameBoard = (() => {
 
    startAgainButton.style.display = "none";
 
+   resetGameButton.style.display = "";
+
+   playerOne.turn = 1
+
+   displayController.whoseTurnIsIt ()
+
+   if(chooseOneToPlay.value == "computer") return
+
    let randomNumber = Math.floor(Math.random() * 2);
    
    if (randomNumber == 0) playerOne.turn = 0;
    if (randomNumber == 1) playerOne.turn = 1;
-
-   resetGameButton.style.display = "";
 
    displayController.whoseTurnIsIt ()
 
@@ -162,6 +179,17 @@ const displayController = (() => {
   const resetGameButton = document.querySelector(".reset-game");
   const playerTitles = document.querySelectorAll(".player-title");
   const changeNameDiv = document.querySelector(".change-name");
+  const player2Title = document.querySelector("#player-title2")
+
+  chooseOneToPlay.addEventListener("change", () => {
+    if(chooseOneToPlay.value == "computer") {
+      player2Title.textContent = "Computer";
+      player2Title.contentEditable = false;
+    } else {
+      player2Title.textContent = "Player 2";
+      player2Title.contentEditable = true;
+    }
+  })
 
   setTimeout(function(){ changeNameDiv.style.display = "none"; }, 4000);
 
@@ -204,7 +232,8 @@ const displayController = (() => {
     secondField.style.backgroundColor = "green";
     startAgainButton.style.display = "block";
     if(originalField.textContent == "X") {playerOne.score += 1; whoseTurnDiv.textContent = "Player One Wins"}
-    if(originalField.textContent == "O") {playerTwo.score += 1; whoseTurnDiv.textContent = "Player Two Wins"}
+    if(originalField.textContent == "O" && chooseOneToPlay.value == "computer") {playerTwo.score += 1; whoseTurnDiv.textContent = "Computer Wins"}
+    else if(originalField.textContent == "O") {playerTwo.score += 1; whoseTurnDiv.textContent = "Player Two Wins"}
     playerOneScore.textContent = playerOne.score;
     playerTwoScore.textContent = playerTwo.score;
     resetGameButton.style.display = "block";
