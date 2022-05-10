@@ -26,7 +26,7 @@
 
 ### Links
 
-> View the project [here](https://funkosaur.github.io/calculator/)
+> View the project [here](https://funkosaur.github.io/TicTacToe/)
 
 ## My process
 
